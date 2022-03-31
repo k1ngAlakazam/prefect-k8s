@@ -5,7 +5,7 @@ from prefect.client.secrets import Secret
 def set_run_config() -> RunConfig:
     return KubernetesRun(
         labels=["aws"],
-        image="docker push purplebeast786/dummy:latest",
+        image="purplebeast786/dummy:latest",
         image_pull_policy="IfNotPresent",
         cpu_request="1",
         memory_request="2G",
