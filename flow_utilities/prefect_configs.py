@@ -16,14 +16,13 @@ def set_run_config() -> RunConfig:
                 "template": {
                     "metadata": {
                         "labels": {
-                            "execution-model": "provisioned"
+                            "execution-model": "serverless"
                         }
                     },
                     "spec": {
                         "containers": [
                             {
-                                "name": "flow",
-                                "command": ["/bin/bash", "-c"]
+                                "name": "flow"
                             }
                         ],
                         # "nodeSelector": {
