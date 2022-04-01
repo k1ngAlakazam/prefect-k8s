@@ -24,13 +24,7 @@ def set_run_config() -> RunConfig:
                             {
                                 "name": "flow",
                                 # "command": ["/bin/sh", "-c"],
-                                # "args": ["prefect execute flow-run"],
-                                # "env": [
-                                #     {
-                                #         "name": "PREFECT__CONTEXT__FLOW_RUN_ID",
-                                #         "value": "PREFECT__CONTEXT__FLOW_RUN_ID"
-                                #     }
-                                # ]
+                                # "args": ["prefect execute flow-run"]
                             }
                         ],
                         "nodeSelector": {
