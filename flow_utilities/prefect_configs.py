@@ -22,11 +22,7 @@ def set_run_config() -> RunConfig:
                     "spec": {
                         "containers": [
                             {
-                                "name": "flow",
-                                "command": [
-                                    "/bin/bash",
-                                    "-c"
-                                ]
+                                "name": "flow"
                             }
                         ],
                         "nodeSelector": {

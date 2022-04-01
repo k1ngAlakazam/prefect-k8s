@@ -3,7 +3,7 @@ from flow_utilities.prefect_configs import set_run_config, set_storage
 import pandas as pd
 import prefect
 from prefect import task, Flow
-from prefect.executors import LocalDaskExecutor
+from prefect.executors import LocalDaskExecutor, LocalExecutor
 from prefect.engine.results import PrefectResult
 from datetime import datetime
 import time
@@ -26,7 +26,7 @@ def extract_and_load(dataset: str) -> None:
 
 with Flow(
     FLOW_NAME,
-    executor=LocalDaskExecutor(),
+    executor=LocalExecutor(),
     storage=set_storage(FLOW_NAME),
     run_config=set_run_config(),
 ) as flow:
