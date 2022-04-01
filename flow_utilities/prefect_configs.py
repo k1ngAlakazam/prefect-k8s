@@ -16,7 +16,7 @@ def set_run_config() -> RunConfig:
                 "template": {
                     "metadata": {
                         "labels": {
-                            "execution-model": "provisioned"
+                            "execution-model": "serverless"
                         }
                     },
                     "spec": {
@@ -24,20 +24,21 @@ def set_run_config() -> RunConfig:
                             {
                                 "name": "flow",
                                 # "command": ["/bin/sh", "-c"],
+                                "command": ["tini", "-g", "--", "entrypoint.sh"],
                                 "image": "purplebeast786/dummy:latest",
                                 "imagePullPolicy": "IfNotPresent",
                                 # "args": ["prefect execute flow-run"]
                             }
                         ],
                         "nodeSelector": {
-                            "execution-model": "provisioned"
+                            "execution-model": "serverless"
                         },
-                        # "tolerations": [
-                        #     {
-                        #         "key": "virtual-kubelet.io/provider",
-                        #         "operator": "Exists"
-                        #     }
-                        # ]
+                        "tolerations": [
+                            {
+                                "key": "virtual-kubelet.io/provider",
+                                "operator": "Exists"
+                            }
+                        ]
                     }
                 }
             }
