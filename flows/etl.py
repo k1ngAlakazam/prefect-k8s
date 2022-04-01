@@ -26,7 +26,7 @@ def extract_and_load(dataset: str) -> None:
 
 with Flow(
     FLOW_NAME,
-    executor=LocalExecutor(),
+    executor=LocalDaskExecutor(),
     storage=set_storage(FLOW_NAME),
     run_config=set_run_config(),
 ) as flow:
