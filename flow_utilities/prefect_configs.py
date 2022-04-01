@@ -4,7 +4,7 @@ from prefect.client.secrets import Secret
 
 def set_run_config() -> RunConfig:
     return KubernetesRun(
-        labels=["aws"],
+        labels=["azure"],
         image="purplebeast786/dummy:latest",
         image_pull_policy="IfNotPresent",
         cpu_request="1",
@@ -16,7 +16,7 @@ def set_run_config() -> RunConfig:
                 "template": {
                     "metadata": {
                         "labels": {
-                            "execution-model": "serverless"
+                            "execution-model": "provisioned"
                         }
                     },
                     "spec": {
@@ -25,9 +25,9 @@ def set_run_config() -> RunConfig:
                                 "name": "flow"
                             }
                         ],
-                        # "nodeSelector": {
-                        #     "execution-model": "serverless"
-                        # },
+                        "nodeSelector": {
+                            "execution-model": "provisioned"
+                        },
                         # "tolerations": [
                         #     {
                         #         "key": "virtual-kubelet.io/provider",
