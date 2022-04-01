@@ -23,7 +23,7 @@ def set_run_config() -> RunConfig:
                         "containers": [
                             {
                                 "name": "flow",
-                                "command": ["/bin/sh", "-c"],
+                                # "command": ["/bin/sh", "-c"],
                                 "image": "purplebeast786/dummy:latest",
                                 "imagePullPolicy": "IfNotPresent",
                                 # "args": ["prefect execute flow-run"]
