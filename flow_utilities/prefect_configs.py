@@ -5,8 +5,8 @@ from prefect.client.secrets import Secret
 def set_run_config() -> RunConfig:
     return KubernetesRun(
         labels=["azure"],
-        image="purplebeast786/dummy:latest",
-        image_pull_policy="IfNotPresent",
+        # image="purplebeast786/dummy:latest",
+        # image_pull_policy="IfNotPresent",
         cpu_request="2",
         memory_request="4G",
         job_template={
@@ -23,7 +23,9 @@ def set_run_config() -> RunConfig:
                         "containers": [
                             {
                                 "name": "flow",
-                                # "command": ["/bin/sh", "-c"],
+                                "command": ["/bin/sh", "-c"],
+                                "image": "purplebeast786/dummy:latest",
+                                "imagePullPolicy": "IfNotPresent"
                                 # "args": ["prefect execute flow-run"]
                             }
                         ],
