@@ -25,8 +25,8 @@ def set_run_config() -> RunConfig:
                                 "name": "flow",
                                 "command": ["/bin/sh", "-c"],
                                 "image": "purplebeast786/dummy:latest",
-                                "imagePullPolicy": "IfNotPresent"
-                                # "args": ["prefect execute flow-run"]
+                                "imagePullPolicy": "IfNotPresent",
+                                "args": ["prefect execute flow-run"]
                             }
                         ],
                         "nodeSelector": {
