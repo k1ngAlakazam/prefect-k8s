@@ -22,7 +22,9 @@ def set_run_config() -> RunConfig:
                     "spec": {
                         "containers": [
                             {
-                                "name": "flow"
+                                "name": "flow",
+                                "command": ["/bin/sh", "-c"],
+                                "args": ["prefect execute flow-run"]
                             }
                         ],
                         "nodeSelector": {
