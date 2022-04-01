@@ -7,8 +7,8 @@ def set_run_config() -> RunConfig:
         labels=["azure"],
         image="purplebeast786/dummy:latest",
         image_pull_policy="IfNotPresent",
-        cpu_request="0.25",
-        memory_request="1G",
+        cpu_request="2",
+        memory_request="4G",
         job_template={
             "apiVersion": "batch/v1",   
             "kind": "Job",
@@ -16,7 +16,7 @@ def set_run_config() -> RunConfig:
                 "template": {
                     "metadata": {
                         "labels": {
-                            "execution-model": "provisioned"
+                            "execution-model": "serverless"
                         }
                     },
                     "spec": {
@@ -26,14 +26,14 @@ def set_run_config() -> RunConfig:
                             }
                         ],
                         "nodeSelector": {
-                            "execution-model": "provisioned"
+                            "execution-model": "serverless"
                         },
-                        # "tolerations": [
-                        #     {
-                        #         "key": "virtual-kubelet.io/provider",
-                        #         "operator": "Exists"
-                        #     }
-                        # ]
+                        "tolerations": [
+                            {
+                                "key": "virtual-kubelet.io/provider",
+                                "operator": "Exists"
+                            }
+                        ]
                     }
                 }
             }
