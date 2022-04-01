@@ -7,8 +7,8 @@ def set_run_config() -> RunConfig:
         labels=["azure"],
         # image="purplebeast786/dummy:latest",
         # image_pull_policy="IfNotPresent",
-        cpu_request="0.5",
-        memory_request="2G",
+        # cpu_request="0.5",
+        # memory_request="2G",
         job_template={
             "apiVersion": "batch/v1",   
             "kind": "Job",
@@ -16,28 +16,34 @@ def set_run_config() -> RunConfig:
                 "template": {
                     "metadata": {
                         "labels": {
-                            "execution-model": "serverless"
+                            # "execution-model": "provisioned"
                         }
                     },
                     "spec": {
                         "containers": [
                             {
                                 "name": "flow",
-                                "command": ["/bin/sh", "-c"],
+                                # "command": ["/bin/sh", "-c"],
                                 "image": "purplebeast786/dummy:latest",
                                 "imagePullPolicy": "IfNotPresent",
-                                "args": ["prefect", "execute", "flow-run"]
+                                # "args": ["prefect execute flow-run"]
                             }
                         ],
-                        "nodeSelector": {
-                            "execution-model": "serverless"
-                        },
-                        "tolerations": [
-                            {
-                                "key": "virtual-kubelet.io/provider",
-                                "operator": "Exists"
+                        "resources": {
+                            "requests": {
+                                "cpu": "0.5",
+                                "memory": "2"
                             }
-                        ]
+                        },
+                        "nodeSelector": {
+                            "execution-model": "provisioned"
+                        },
+                        # "tolerations": [
+                        #     {
+                        #         "key": "virtual-kubelet.io/provider",
+                        #         "operator": "Exists"
+                        #     }
+                        # ]
                     }
                 }
             }
