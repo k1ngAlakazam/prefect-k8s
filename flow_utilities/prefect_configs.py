@@ -16,7 +16,7 @@ def set_run_config() -> RunConfig:
                 "template": {
                     "metadata": {
                         "labels": {
-                            "execution-model": "serverless"
+                            "execution-model": "provisioned"
                         }
                     },
                     "spec": {
@@ -26,14 +26,14 @@ def set_run_config() -> RunConfig:
                             }
                         ],
                         "nodeSelector": {
-                            "execution-model": "serverless"
+                            "execution-model": "provisioned"
                         },
-                        "tolerations": [
-                            {
-                                "key": "virtual-kubelet.io/provider",
-                                "operator": "Exists"
-                            }
-                        ]
+                        # "tolerations": [
+                        #     {
+                        #         "key": "virtual-kubelet.io/provider",
+                        #         "operator": "Exists"
+                        #     }
+                        # ]
                     }
                 }
             }
