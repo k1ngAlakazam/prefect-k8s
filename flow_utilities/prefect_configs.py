@@ -7,8 +7,8 @@ def set_run_config() -> RunConfig:
         labels=["azure"],
         image="purplebeast786/dummy:latest",
         image_pull_policy="IfNotPresent",
-        cpu_request="1",
-        memory_request="2G",
+        cpu_request="0.25",
+        memory_request="1G",
         job_template={
             "apiVersion": "batch/v1",   
             "kind": "Job",
