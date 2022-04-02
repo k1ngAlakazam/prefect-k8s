@@ -26,7 +26,7 @@ def set_run_config() -> RunConfig:
                                 "command": ["/bin/sh", "-c"],
                                 "image": "purplebeast786/dummy:latest",
                                 "imagePullPolicy": "IfNotPresent",
-                                # "args": ["prefect execute flow-run"]
+                                "args": ["prefect execute flow-run $(echo $PREFECT__CONTEXT__FLOW_RUN_ID)"]
                             }
                         ],
                         "resources": {
